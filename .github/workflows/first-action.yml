@@ -1,9 +1,9 @@
-name: Cocogitto bump version
+name: Cocogitto major bump
 on: 
   workflow_dispatch:
     inputs:
       type:
-        description: 'Choice of version to bump'
+        description: 'Major bump type'
         required: true
         default: 'major'
         type: choice
@@ -11,8 +11,6 @@ on:
           - major
           - major-beta
           - major-rc
-          - patch-beta
-          - patch-rc
 jobs:
   major:
     if : github.event.inputs.type == 'major'
@@ -23,10 +21,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Bump Major Version
-        uses: cocogitto/cocogitto-action@v3
+      - name: Bump major version
+        uses: cocogitto/cocogitto-action@v3.8
       - run: |
-            cog bump --major
+          cog bump --major
   major-beta:
     if : github.event.inputs.type == 'major-beta'
     permissions: write-all
@@ -36,8 +34,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Bump Major Version with Beta Suffix
-        uses: cocogitto/cocogitto-action@v3
+      - name: Bump major version with beta suffix
+        uses: cocogitto/cocogitto-action@v3.8
       - run: |
           cog bump --major --pre "beta"
   major-rc:
@@ -49,33 +47,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Buump Major Version with Release Candidate Suffix
-        uses: cocogitto/cocogitto-action@v3
+      - name: Bump major version with rc suffix
+        uses: cocogitto/cocogitto-action@v3.8
       - run: |
           cog bump --major --pre "rc"
-  patch-beta:
-    if : github.event.inputs.type == 'patch-beta'
-    permissions: write-all
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Bump Patch Version with Beta Suffix
-        uses: cocogitto/cocogitto-action@v3
-      - run: |
-          cog bump --patch --pre "beta"
-  patch-rc:
-    if : github.event.inputs.type == 'patch-rc'
-    permissions: write-all
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Buump Patch Version with Release Candidate Suffix
-        uses: cocogitto/cocogitto-action@v3
-      - run: |
-          cog bump --patch --pre "rc"
