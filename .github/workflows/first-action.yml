@@ -1,9 +1,9 @@
-name: Cocogitto major bump
+name: Cocogitto bump version
 on: 
   workflow_dispatch:
     inputs:
       type:
-        description: 'Choice of major version bump'
+        description: 'Choice of version to bump'
         required: true
         default: 'major'
         type: choice
@@ -11,6 +11,8 @@ on:
           - major
           - major-beta
           - major-rc
+          - patch-beta
+          - patch-beta
 jobs:
   major:
     if : github.event.inputs.type == 'major'
@@ -51,3 +53,29 @@ jobs:
         uses: cocogitto/cocogitto-action@v3
       - run: |
           cog bump --major --pre "rc"
+  patch-beta:
+    if : github.event.inputs.type == 'patch-beta'
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Bump Patch Version with Beta Suffix
+        uses: cocogitto/cocogitto-action@v3
+      - run: |
+          cog bump --patch --pre "beta"
+  patch-rc:
+    if : github.event.inputs.type == 'patch-rc'
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Buump Patch Version with Release Candidate Suffix
+        uses: cocogitto/cocogitto-action@v3
+      - run: |
+          cog bump --patch --pre "rc"
