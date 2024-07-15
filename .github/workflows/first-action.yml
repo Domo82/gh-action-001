@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       type:
-        description: 'Version to bump'
+        description: 'Choice of major version bump'
         required: true
         default: 'major'
         type: choice
