@@ -1,11 +1,27 @@
-name: First Workflow
-on: workflow_dispatch
+name: Cocogitto major bump
+on: 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to bump'
+        required: true
+        default: 'major'
+        type: choice
+        options: 
+          - major
+          - minor
+          - patch
 jobs:
-  first-job:
+  bump-version:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
-      - name: Print Greeting
-        run: echo "Hello World"
-      - name: Print Goodbye
-        run: echo "Goodbye"
-    
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Semver release
+        uses: cocogitto/cocogitto-action@v3
+      - name: Bump Major Version
+        run: |
+          echo cog bump --major
