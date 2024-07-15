@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## v8.0.0-beta - 2024-07-15
+#### Miscellaneous Chores
+- update the README - (5781dce) - dominic dillon
+
+- - -
+
 ## v6.1.0 - 2024-07-15
 #### Miscellaneous Chores
 - updated readme - (31a87ce) - dominic dillon
