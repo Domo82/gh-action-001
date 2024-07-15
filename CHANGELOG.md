@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## v4.0.0 - 2024-07-15
+#### Miscellaneous Chores
+- updated README - (204a395) - dominic dillon
+
+- - -
+
 ## v1.0.0 - 2024-07-15
 #### Miscellaneous Chores
 - added cog.toml file - (931c98e) - dominic dillon
