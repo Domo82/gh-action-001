@@ -1,16 +1,5 @@
 name: Cocogitto major bump
-on: 
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version to bump'
-        required: true
-        default: 'major'
-        type: choice
-        options: 
-          - major
-          - minor
-          - patch
+on: workflow_dispatch
 jobs:
   bump-version:
     permissions: write-all
@@ -24,4 +13,4 @@ jobs:
         uses: cocogitto/cocogitto-action@v3
       - name: Bump Major Version
         run: |
-          echo cog bump --major
+          cog bump --major
