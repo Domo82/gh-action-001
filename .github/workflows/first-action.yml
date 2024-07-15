@@ -12,7 +12,7 @@ on:
           - major-beta
           - major-rc
           - patch-beta
-          - patch-beta
+          - patch-rc
 jobs:
   major:
     if : github.event.inputs.type == 'major'
