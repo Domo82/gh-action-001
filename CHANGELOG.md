@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## v7.0.0 - 2024-07-15
+#### Miscellaneous Chores
+- changed workflow structure - (bbb33f1) - dominic dillon
+
+- - -
+
 ## v6.1.0 - 2024-07-15
 #### Miscellaneous Chores
 - updated readme - (31a87ce) - dominic dillon
