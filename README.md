@@ -1,2 +1,2 @@
 # gh-action-001
-This is another update to README
+This is a new update to README
