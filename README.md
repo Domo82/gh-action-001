@@ -1,2 +1,2 @@
 # gh-action-001
-This is a cool README update
+This is a cool README
