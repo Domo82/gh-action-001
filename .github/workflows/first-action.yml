@@ -1,7 +1,18 @@
 name: Cocogitto major bump
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      type:
+        description: 'Version to bump'
+        required: true
+        default: 'major'
+        type: choice
+        options: 
+          - major
+          - major-beta
+          - major-rc
 jobs:
-  bump-version:
+  major:
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
@@ -14,3 +25,29 @@ jobs:
       - name: Bump Major Version
         run: |
           cog bump --major
+  major-beta:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Semver release
+        uses: cocogitto/cocogitto-action@v3
+      - name: Bump Major Version
+        run: |
+          cog bump --major --pre "beta"
+  major-rc:
+    permissions: write-all
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Semver release
+        uses: cocogitto/cocogitto-action@v3
+      - name: Bump Major Version
+        run: |
+          cog bump --major --pre "rc"
